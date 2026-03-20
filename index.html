@@ -3,139 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zheenbek Karaev | DevOps Engineer</title>
+  <title>Jim's Portfolio </title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-<header class="header">
-  <div class="container header-content">
-    <div class="logo">ZH<span>KARAEV</span></div>
-
-    <nav class="nav" id="nav">
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-
-  <section id="home" class="section hero">
-    <div class="container hero-content">
-      <div>
-        <p class="hero-subtitle">Hello, I'm</p>
-
-        <p class="hero-text">
-          DevOps / SRE Engineer with 5+ years of experience supporting cloud infrastructure,
-          Kubernetes platforms, CI/CD pipelines, automation, and production systems across
-          enterprise retail and financial environments.
-        </p>
-
-      <p class="section-text">
-        I hold a Bachelor's degree in Computer Science and started my career as a System Administrator,
-        where I spent two years supporting Linux and Windows Server environments, networking,
-        virtualization, backups, monitoring, and infrastructure operations.
-      </p>
-
-      <p class="section-text">
-        After building a strong infrastructure foundation, I transitioned into DevOps / SRE
-        and now have over 5 years of experience working across enterprise environments,
-        including The Home Depot and Wells Fargo in retail and financial sectors.
-      </p>
-
-      <p class="section-text">
-        My work focuses on cloud platforms, Kubernetes, CI/CD pipelines,
-        Infrastructure as Code, monitoring, automation, and building reliable
-        production systems using modern DevOps practices.
-      </p>
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo">ZH<span>K</span></div>
+      <nav class="nav" id="nav">
+        <a href="#home">Home</a>
+        <a href="about.html">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn">☰</button>
     </div>
+  </header>
 
-      <div class="hero-card">
-        <p><strong>Location:</strong> Chicago, USA</p>
-        <p><strong>Focus:</strong> AWS · Kubernetes · Terraform · CI/CD </p>
-        <p><strong>Open to:</strong> DevOps / Cloud / SRE opportunities</p>
+  <main>
+    <!-- HERO / HOME -->
+    <section id="home" class="section hero">
+  <div class="container hero-content">
+    <div>
+      <p class="hero-subtitle">Hello, I'm</p>
+      <h1 class="hero-title">Zheenbek Karaev</h1>
+
+      <!-- NEW BADGE -->
+      <div class="ci-badge">
+        Deployed with <span>JENKINS, GitHub Actions</span> &amp; <span>AWS S3</span> </div>
+
+      <p class="hero-text">
+        DevOps / Cloud Engineer &amp; passionate learner.  
+        I build, deploy and automate modern applications in the cloud.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn primary">View Projects</a>
+        <a href="#contact" class="btn secondary">Contact Me</a>
       </div>
     </div>
-  </section>
+   <div class="hero-card">
+          <p><strong>Location:</strong> Chicago, USA</p>
+          <p><strong>Focus:</strong> AWS · Docker · Kubernetes · Terraform</p>
+          <p><strong>Open to:</strong> Internships & Junior roles</p>
+        </div>
+      </div>
+    </section>
 
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-text">
+          I’m a self-taught engineer learning DevOps, cloud and automation.
+          I enjoy building projects, breaking things, and then fixing them
+          to understand how they really work.
+        </p>
+        <p class="section-text">
+          I have experience with AWS, Linux, Docker, Kubernetes, GitHub Actions,
+          and Terraform. I like deploying apps in the cloud and improving CI/CD pipelines.
+        </p>
+      </div>
+    </section>
 
-<section id="skills" class="section section-alt">
-
-  <div class="container">
-
-    <h2 class="section-title">Technical Skills</h2>
-
-    <div class="card">
-
-      <p>
-        <strong>Cloud:</strong>
-        AWS (EC2, VPC, IAM, RDS, S3, Route53, EKS, ECS, Lambda, CloudWatch)
-      </p>
-
-      <p>
-        <strong>Infrastructure as Code:</strong>
-        Terraform, Ansible
-      </p>
-
-      <p>
-        <strong>Containers / Orchestration:</strong>
-        Docker, Kubernetes, Helm, ArgoCD
-      </p>
-
-      <p>
-        <strong>CI/CD:</strong>
-        Jenkins, GitHub Actions, GitLab CI
-      </p>
-
-      <p>
-        <strong>Monitoring & Logging:</strong>
-        Prometheus, Grafana, ELK, CloudWatch
-      </p>
-
-      <p>
-        <strong>Programming:</strong>
-        Python, Bash
-      </p>
-
-      <p>
-        <strong>Concepts:</strong>
-        Microservices, High Availability, CI/CD, GitOps,
-        HA/DR, RTO/RPO, DevSecOps
-      </p>
-
-      <p>
-        <strong>Operating Systems:</strong>
-        Linux, Windows Server
-      </p>
-
-      <p>
-        <strong>Networking:</strong>
-        TCP/IP, DNS, DHCP, NAT, HTTP/S, SSH, UDP
-      </p>
-
-      <p>
-        <strong>Infrastructure:</strong>
-        Active Directory, NFS, Virtualization
-      </p>
-
-      <p>
-        <strong>Operations:</strong>
-        Backup & Recovery, Incident Management, System Monitoring
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-
-
+    <!-- SKILLS -->
+    <section id="skills" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="grid skills-grid">
+          <div class="card">
+            <h3>Cloud & DevOps</h3>
+            <ul>
+              <li>AWS (EC2, S3, IAM, VPC, RDS, CloudFront)</li>
+              <li>CI/CD (GitHub Actions)</li>
+              <li>Monitoring & Logs basics</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Containers & Orchestration</h3>
+            <ul>
+              <li>Docker (images, containers, Dockerfile)</li>
+              <li>Docker Compose</li>
+              <li>Kubernetes basics (pods, deployments, services)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Programming & Tools</h3>
+            <ul>
+              <li>Python basics</li>
+              <li>Linux (shell, basic commands)</li>
+              <li>Git & GitHub</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- PROJECTS -->
     <section id="projects" class="section">
@@ -152,17 +114,12 @@
             <!-- <a href="https://github.com/your-repo" target="_blank" class="link">View on GitHub</a> -->
           </div>
           <div class="card">
-          <h3>JumpToTech Microservices Platform</h3>
-          <p>
-            Full-stack microservices platform deployed on Kubernetes using GitOps
-            and CI/CD automation. Includes frontend, API gateway, backend services,
-            database, monitoring stack, and automated deployments.
-          </p>
-          <p class="tag">
-            Tech: Kubernetes, Docker, Jenkins, ArgoCD,
-            FastAPI, Next.js, PostgreSQL,
-            Prometheus, Grafana
-          </p>
+            <h3>Octopus AI Tutorials</h3>
+            <p>
+              Created video scripts and documentation for a TMS platform used in trucking.
+              Covered loads, safety, mobile app, and reporting.
+            </p>
+            <p class="tag">Tech: TMS, Trucking, Documentation</p>
           </div>
           <div class="card">
             <h3>Personal Site / Lab</h3>
@@ -175,6 +132,61 @@
         </div>
       </div>
     </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-text">
+          Feel free to reach out if you want to talk about DevOps, cloud, or projects.
+        </p>
+        <div class="contact-grid">
+          <div class="card">
+            <h3>Email</h3>
+            <p><a href="mailto:jim@manasexpress.com">jim@manasexpress.com</a></p>
+          </div>
+          <div class="card">
+            <h3>LinkedIn</h3>
+            <p><a href="https://www.linkedin.com/in/zheenbek-karaev/" target="_blank">linkedin.com/in/zheenbek-karaev/</a></p>
+          </div>
+          <div class="card">
+            <h3>GitHub</h3>
+            <p><a href="https://github.com/juzonb1r” target="_blank">github.com/yourgithub</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© <span id="year"></span> JIM.  All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <section id="certifications" class="section">
     <div class="container">
@@ -191,56 +203,3 @@
       </div>
     </div>
   </section>
-
-<section id="contact" class="section">
-
-  <div class="container">
-
-    <h2 class="section-title">Contact</h2>
-
-    <div class="card">
-
-      <p>
-        <strong>Email:</strong>
-        <a href="mailto:jimkaraev@gmail.com">
-          jimkaraev@gmail.com
-        </a>
-      </p>
-
-      <p>
-        <strong>Phone:</strong>
-        <a href="tel:+13129456311">
-          +1 312-945-6311
-        </a>
-      </p>
-
-      <p>
-        <strong>LinkedIn:</strong>
-        <a href="https://linkedin.com/in/zheenbek-karaev" target="_blank">
-          linkedin.com/in/zheenbek-karaev
-        </a>
-      </p>
-
-      <p>
-        <strong>GitHub:</strong>
-        <a href="https://github.com/juzonb1r" target="_blank">
-          github.com/juzonb1r
-        </a>
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-</main>
-
-<footer class="footer">
-  <div class="container footer-content">
-    <p>© Zheenbek Karaev</p>
-  </div>
-</footer>
-
-</body>
-</html>
