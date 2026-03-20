@@ -148,6 +148,7 @@ a:hover {
   margin-bottom: 28px;
 }
 
+.section-text,
 .section p {
   color: #cbd5e1;
   margin-bottom: 16px;
@@ -170,14 +171,33 @@ a:hover {
   gap: 24px;
 }
 
+.skills-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
 .project-grid {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.contact-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: grid;
+  gap: 24px;
 }
 
 .card h3 {
   color: #ffffff;
   font-size: 1.2rem;
   margin-bottom: 14px;
+}
+
+.card ul {
+  padding-left: 18px;
+}
+
+.card li {
+  margin-bottom: 8px;
+  color: #cbd5e1;
 }
 
 .tag {

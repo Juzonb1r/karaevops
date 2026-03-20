@@ -3,377 +3,287 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Zheenbek Karaev | DevOps Engineer</title>
-
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
 <header class="header">
-
   <div class="container header-content">
-
     <div class="logo">ZH<span>KARAEV</span></div>
 
-    <nav class="nav">
-
+    <nav class="nav" id="nav">
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
-
     </nav>
-
   </div>
-
 </header>
-
-
 
 <main>
 
-<!-- HERO -->
+  <section id="home" class="section hero">
+    <div class="container hero-content">
+      <div>
+        <p class="hero-subtitle">Hello, I'm</p>
+        <h1 class="hero-title">Zheenbek Karaev</h1>
 
-<section id="home" class="section hero">
+        <div class="ci-badge">
+          DevOps / SRE Engineer | AWS | Kubernetes | Terraform | CI/CD | GitOps
+        </div>
 
-  <div class="container hero-content">
-
-    <div>
-
-      <p class="hero-subtitle">Hello, I'm</p>
-
-      <h1 class="hero-title">Zheenbek Karaev</h1>
-
-      <div class="ci-badge">
-        DevOps / SRE Engineer | AWS | Kubernetes | Terraform | CI/CD | GitOps
+        <p class="hero-text">
+          DevOps / SRE Engineer with 5+ years of experience supporting cloud infrastructure,
+          Kubernetes platforms, CI/CD pipelines, automation, and production systems across
+          enterprise retail and financial environments.
+        </p>
       </div>
 
-      <p class="hero-text">
-
-        DevOps / SRE Engineer with 5+ years of experience supporting cloud infrastructure,
-        Kubernetes platforms, CI/CD pipelines, automation, and production systems across
-        enterprise retail and financial environments.
-
-      </p>
-
-    </div>
-
-
-    <div class="hero-card">
-
-      <p><strong>Location:</strong> Chicago, USA</p>
-
-      <p><strong>Focus:</strong> AWS · Kubernetes · Terraform · CI/CD · SRE</p>
-
-      <p><strong>Open to:</strong> DevOps / Cloud / SRE opportunities</p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- ABOUT -->
-
-
-<section id="about" class="section">
-
-  <div class="container">
-
-    <h2 class="section-title">About Me</h2>
-
-    <p>
-
-      I hold a Bachelor's degree in Computer Science and started my career as a System Administrator,
-      where I spent two years supporting Linux and Windows Server environments, networking,
-      virtualization, backups, monitoring, and infrastructure operations.
-
-    </p>
-
-    <p>
-
-      After building a strong infrastructure foundation, I transitioned into DevOps / SRE
-      and now have over 5 years of experience working across enterprise environments,
-      including The Home Depot and Wells Fargo in retail and financial sectors.
-
-    </p>
-
-    <p>
-
-      My work focuses on cloud platforms, Kubernetes, CI/CD pipelines,
-      Infrastructure as Code, monitoring, automation, and building reliable
-      production systems using modern DevOps practices.
-
-    </p>
-
-  </div>
-
-</section>
-
-
-
-<!-- SKILLS -->
-
-
-<section id="skills" class="section section-alt">
-
-  <div class="container">
-
-    <h2 class="section-title">Technical Skills</h2>
-
-    <div class="card">
-
-      <p>
-        <strong>Cloud:</strong>
-        AWS (EC2, VPC, IAM, RDS, S3, Route53, EKS, ECS, Lambda, CloudWatch)
-      </p>
-
-      <p>
-        <strong>Infrastructure as Code:</strong>
-        Terraform, Ansible
-      </p>
-
-      <p>
-        <strong>Containers / Orchestration:</strong>
-        Docker, Kubernetes, Helm, ArgoCD
-      </p>
-
-      <p>
-        <strong>CI/CD:</strong>
-        Jenkins, GitHub Actions, GitLab CI
-      </p>
-
-      <p>
-        <strong>Monitoring & Logging:</strong>
-        Prometheus, Grafana, ELK, CloudWatch
-      </p>
-
-      <p>
-        <strong>Programming:</strong>
-        Python, Bash
-      </p>
-
-      <p>
-        <strong>Concepts:</strong>
-        Microservices, High Availability, CI/CD,
-        GitOps, HA/DR, RTO/RPO, DevSecOps
-      </p>
-
-      <p>
-        <strong>Operating Systems:</strong>
-        Linux, Windows Server
-      </p>
-
-      <p>
-        <strong>Networking:</strong>
-        TCP/IP, DNS, DHCP, NAT, HTTP/S, SSH, UDP
-      </p>
-
-      <p>
-        <strong>Infrastructure:</strong>
-        Active Directory, NFS, Virtualization
-      </p>
-
-      <p>
-        <strong>Operations:</strong>
-        Backup & Recovery, Incident Management, System Monitoring
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- PROJECTS -->
-
-
-<section id="projects" class="section section-alt">
-
-  <div class="container">
-
-    <h2 class="section-title">Projects</h2>
-
-
-    <div class="grid project-grid">
-
-
-      <div class="card">
-
-        <h3>JumpToTech Microservices Platform</h3>
-
-        <p>
-
-          Full-stack microservices platform deployed on Kubernetes using GitOps
-          and CI/CD automation. Includes frontend, API gateway, backend services,
-          database, monitoring stack, and automated deployments.
-
-        </p>
-
-        <p class="tag">
-
-          Tech: Kubernetes, Docker, Jenkins, ArgoCD,
-          FastAPI, Next.js, PostgreSQL,
-          Prometheus, Grafana
-
-        </p>
-
+      <div class="hero-card">
+        <p><strong>Location:</strong> Chicago, USA</p>
+        <p><strong>Focus:</strong> AWS · Kubernetes · Terraform · CI/CD · SRE</p>
+        <p><strong>Open to:</strong> DevOps / Cloud / SRE opportunities</p>
       </div>
-
-
-      <div class="card">
-
-        <h3>Kafka Enterprise Orders</h3>
-
-        <p>
-
-          Microservices-based system using Kafka,
-          Docker, Kubernetes, and CI/CD pipelines.
-
-        </p>
-
-        <p class="tag">
-
-          Tech: Kafka, Docker, Kubernetes, Terraform
-
-        </p>
-
-      </div>
-
-
-      <div class="card">
-
-        <h3>AWS Static Portfolio Website</h3>
-
-        <p>
-
-          Static website hosted on S3 + CloudFront
-          with HTTPS, Route53 domain,
-          and GitHub Actions deployment.
-
-        </p>
-
-        <p class="tag">
-
-          Tech: AWS, S3, CloudFront, Route53, GitHub Actions
-
-        </p>
-
-      </div>
-
-
     </div>
+  </section>
 
-  </div>
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
 
-</section>
+      <p class="section-text">
+        I hold a Bachelor's degree in Computer Science and started my career as a System Administrator,
+        where I spent two years supporting Linux and Windows Server environments, networking,
+        virtualization, backups, monitoring, and infrastructure operations.
+      </p>
 
+      <p class="section-text">
+        After building a strong infrastructure foundation, I transitioned into DevOps / SRE
+        and now have over 5 years of experience working across enterprise environments,
+        including The Home Depot and Wells Fargo in retail and financial sectors.
+      </p>
 
-
-<!-- CERTIFICATIONS -->
-
-
-<section id="certifications" class="section">
-
-  <div class="container">
-
-    <h2 class="section-title">Certifications</h2>
-
-    <div class="cert-grid">
-
-      <div class="cert-card">
-
-        <img src="images/aws.png">
-
-        <p>AWS Solutions Architect Associate</p>
-
-      </div>
-
-
-      <div class="cert-card">
-
-        <img src="images/terraform.png">
-
-        <p>Terraform Associate</p>
-
-      </div>
-
+      <p class="section-text">
+        My work focuses on cloud platforms, Kubernetes, CI/CD pipelines,
+        Infrastructure as Code, monitoring, automation, and building reliable
+        production systems using modern DevOps practices.
+      </p>
     </div>
+  </section>
 
-  </div>
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
 
-</section>
+      <div class="grid skills-grid">
+        <div class="card">
+          <h3>Cloud</h3>
+          <ul>
+            <li>AWS (EC2, VPC, IAM, RDS, S3, Route53, EKS, ECS, Lambda, CloudWatch)</li>
+          </ul>
+        </div>
 
+        <div class="card">
+          <h3>Infrastructure as Code</h3>
+          <ul>
+            <li>Terraform</li>
+            <li>Ansible</li>
+          </ul>
+        </div>
 
+        <div class="card">
+          <h3>Containers / Orchestration</h3>
+          <ul>
+            <li>Docker</li>
+            <li>Kubernetes</li>
+            <li>Helm</li>
+            <li>ArgoCD</li>
+          </ul>
+        </div>
 
-<!-- CONTACT -->
+        <div class="card">
+          <h3>CI/CD</h3>
+          <ul>
+            <li>Jenkins</li>
+            <li>GitHub Actions</li>
+            <li>GitLab CI</li>
+          </ul>
+        </div>
 
+        <div class="card">
+          <h3>Monitoring & Logging</h3>
+          <ul>
+            <li>Prometheus</li>
+            <li>Grafana</li>
+            <li>ELK</li>
+            <li>CloudWatch</li>
+          </ul>
+        </div>
 
-<section id="contact" class="section section-alt">
+        <div class="card">
+          <h3>Programming</h3>
+          <ul>
+            <li>Python</li>
+            <li>Bash</li>
+          </ul>
+        </div>
 
-  <div class="container">
+        <div class="card">
+          <h3>Concepts</h3>
+          <ul>
+            <li>Microservices</li>
+            <li>High Availability</li>
+            <li>CI/CD</li>
+            <li>GitOps</li>
+            <li>HA/DR</li>
+            <li>RTO/RPO</li>
+            <li>DevSecOps</li>
+          </ul>
+        </div>
 
-    <h2 class="section-title">Contact</h2>
+        <div class="card">
+          <h3>Operating Systems</h3>
+          <ul>
+            <li>Linux</li>
+            <li>Windows Server</li>
+          </ul>
+        </div>
 
-    <div class="card">
+        <div class="card">
+          <h3>Networking</h3>
+          <ul>
+            <li>TCP/IP</li>
+            <li>DNS</li>
+            <li>DHCP</li>
+            <li>NAT</li>
+            <li>HTTP/S</li>
+            <li>SSH</li>
+            <li>UDP</li>
+          </ul>
+        </div>
 
-      <p>
-        <strong>Email:</strong>
-        <a href="mailto:jimkaraev@gmail.com">
-          jimkaraev@gmail.com
-        </a>
-      </p>
+        <div class="card">
+          <h3>Infrastructure</h3>
+          <ul>
+            <li>Active Directory</li>
+            <li>NFS</li>
+            <li>Virtualization</li>
+          </ul>
+        </div>
 
-      <p>
-        <strong>Phone:</strong>
-        <a href="tel:+13129456311">
-          +1 312-945-6311
-        </a>
-      </p>
-
-      <p>
-        <strong>LinkedIn:</strong>
-        <a href="https://linkedin.com/in/zheenbek-karaev" target="_blank">
-          linkedin.com/in/zheenbek-karaev
-        </a>
-      </p>
-
-      <p>
-        <strong>GitHub:</strong>
-        <a href="https://github.com/juzonb1r" target="_blank">
-          github.com/juzonb1r
-        </a>
-      </p>
-
+        <div class="card">
+          <h3>Operations</h3>
+          <ul>
+            <li>Backup & Recovery</li>
+            <li>Incident Management</li>
+            <li>System Monitoring</li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </section>
 
-  </div>
+  <section id="projects" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
 
-</section>
+      <div class="grid project-grid">
+        <div class="card">
+          <h3>JumpToTech Microservices Platform</h3>
+          <p>
+            Full-stack microservices platform deployed on Kubernetes using GitOps
+            and CI/CD automation. Includes frontend, API gateway, backend services,
+            database, monitoring stack, and automated deployments.
+          </p>
+          <p class="tag">
+            Tech: Kubernetes, Docker, Jenkins, ArgoCD,
+            FastAPI, Next.js, PostgreSQL,
+            Prometheus, Grafana
+          </p>
+        </div>
 
+        <div class="card">
+          <h3>Kafka Enterprise Orders</h3>
+          <p>
+            Microservices-based system using Kafka,
+            Docker, Kubernetes, and CI/CD pipelines.
+          </p>
+          <p class="tag">
+            Tech: Kafka, Docker, Kubernetes, Terraform
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>AWS Static Portfolio Website</h3>
+          <p>
+            Static website hosted on S3 + CloudFront
+            with HTTPS, Route53 domain,
+            and GitHub Actions deployment.
+          </p>
+          <p class="tag">
+            Tech: AWS, S3, CloudFront, Route53, GitHub Actions
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications" class="section">
+    <div class="container">
+      <h2 class="section-title">Certifications</h2>
+
+      <div class="cert-grid">
+        <div class="cert-card">
+          <img src="images/aws.png" alt="AWS badge" />
+          <p>AWS Solutions Architect Associate</p>
+        </div>
+
+        <div class="cert-card">
+          <img src="images/terraform.png" alt="Terraform badge" />
+          <p>Terraform Associate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+
+      <div class="contact-grid">
+        <div class="card">
+          <h3>Email</h3>
+          <p><a href="mailto:jimkaraev@gmail.com">jimkaraev@gmail.com</a></p>
+        </div>
+
+        <div class="card">
+          <h3>Phone</h3>
+          <p><a href="tel:+13129456311">+1 312-945-6311</a></p>
+        </div>
+
+        <div class="card">
+          <h3>LinkedIn</h3>
+          <p><a href="https://linkedin.com/in/zheenbek-karaev" target="_blank">linkedin.com/in/zheenbek-karaev</a></p>
+        </div>
+
+        <div class="card">
+          <h3>GitHub</h3>
+          <p><a href="https://github.com/juzonb1r" target="_blank">github.com/juzonb1r</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </main>
 
-
-
 <footer class="footer">
-
-  <div class="container">
-
+  <div class="container footer-content">
     <p>© Zheenbek Karaev</p>
-
   </div>
-
 </footer>
-
 
 </body>
 </html>
