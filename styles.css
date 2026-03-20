@@ -458,3 +458,23 @@ body {
   color: var(--accent);
 }
 
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.cert-card {
+  text-align: center;
+}
+
+.cert-card img {
+  width: 120px;
+  height: auto;
+}
+
+.cert-card p {
+  margin-top: 10px;
+  font-weight: bold;
+}
