@@ -3,8 +3,258 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jim's Portfolio </title>
+  <title>Jim's Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── AI CHAT WIDGET STYLES ── */
+    #chat-bubble {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 0 rgba(56,189,248,0.5);
+      animation: chatPulse 2.5s infinite;
+      transition: transform 0.2s;
+      z-index: 1000;
+    }
+    #chat-bubble:hover { transform: scale(1.1); }
+    #chat-bubble svg { width: 26px; height: 26px; fill: white; }
+    @keyframes chatPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(56,189,248,0.5); }
+      70%  { box-shadow: 0 0 0 14px rgba(56,189,248,0); }
+      100% { box-shadow: 0 0 0 0 rgba(56,189,248,0); }
+    }
+    #chat-window {
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      width: 380px;
+      max-height: 580px;
+      background: #0f1729;
+      border: 1px solid rgba(56,189,248,0.2);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 40px rgba(56,189,248,0.05);
+      transform: translateY(20px) scale(0.95);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 999;
+    }
+    #chat-window.open {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      pointer-events: all;
+    }
+    .chat-header {
+      padding: 16px 20px;
+      background: linear-gradient(90deg, rgba(56,189,248,0.08), transparent);
+      border-bottom: 1px solid rgba(56,189,248,0.12);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .chat-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #38bdf8, #0284c7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+    .chat-header-info { flex: 1; }
+    .chat-header-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      color: #e2e8f0;
+      font-weight: 700;
+    }
+    .chat-header-status {
+      font-size: 11px;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 2px;
+    }
+    .chat-status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: chatBlink 2s infinite;
+    }
+    @keyframes chatBlink {
+      0%,100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .chat-close-btn {
+      background: none;
+      border: none;
+      color: #64748b;
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+      padding: 4px;
+      transition: color 0.2s;
+    }
+    .chat-close-btn:hover { color: #e2e8f0; }
+    #chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      scroll-behavior: smooth;
+    }
+    #chat-messages::-webkit-scrollbar { width: 4px; }
+    #chat-messages::-webkit-scrollbar-track { background: transparent; }
+    #chat-messages::-webkit-scrollbar-thumb { background: rgba(56,189,248,0.2); border-radius: 2px; }
+    .chat-msg {
+      display: flex;
+      gap: 10px;
+      animation: chatFadeUp 0.3s ease;
+    }
+    @keyframes chatFadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .chat-msg.user { flex-direction: row-reverse; }
+    .chat-msg-avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'Space Mono', monospace;
+    }
+    .chat-msg.bot .chat-msg-avatar { background: linear-gradient(135deg, #38bdf8, #0284c7); color: white; }
+    .chat-msg.user .chat-msg-avatar { background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid rgba(56,189,248,0.3); }
+    .chat-bubble-msg {
+      max-width: 78%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      line-height: 1.55;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .chat-msg.bot .chat-bubble-msg {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #cbd5e1;
+      border-radius: 4px 12px 12px 12px;
+    }
+    .chat-msg.user .chat-bubble-msg {
+      background: linear-gradient(135deg, rgba(56,189,248,0.18), rgba(14,165,233,0.12));
+      border: 1px solid rgba(56,189,248,0.25);
+      color: #e2e8f0;
+      border-radius: 12px 4px 12px 12px;
+    }
+    .chat-typing { display: flex; gap: 4px; padding: 4px 0; align-items: center; }
+    .chat-typing span {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #38bdf8;
+      animation: chatTypingAnim 1.2s infinite;
+    }
+    .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes chatTypingAnim {
+      0%,60%,100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-6px); opacity: 1; }
+    }
+    .chat-suggestions {
+      padding: 0 16px 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .chat-chip {
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(56,189,248,0.25);
+      background: rgba(56,189,248,0.05);
+      color: #7dd3fc;
+      font-size: 11.5px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .chat-chip:hover {
+      background: rgba(56,189,248,0.12);
+      border-color: rgba(56,189,248,0.5);
+      color: #38bdf8;
+    }
+    .chat-input-area {
+      padding: 12px 16px 16px;
+      border-top: 1px solid rgba(56,189,248,0.08);
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
+    #chat-input {
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(56,189,248,0.15);
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: #e2e8f0;
+      font-size: 13.5px;
+      font-family: 'DM Sans', sans-serif;
+      resize: none;
+      outline: none;
+      max-height: 100px;
+      transition: border-color 0.2s;
+      line-height: 1.4;
+    }
+    #chat-input:focus { border-color: rgba(56,189,248,0.4); }
+    #chat-input::placeholder { color: #475569; }
+    #chat-send-btn {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    #chat-send-btn:hover { transform: scale(1.05); }
+    #chat-send-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    #chat-send-btn svg { width: 16px; height: 16px; fill: white; }
+    .chat-powered {
+      text-align: center;
+      padding: 6px 16px 0;
+      font-size: 10.5px;
+      color: #334155;
+      font-family: 'DM Sans', sans-serif;
+    }
+    @media (max-width: 480px) {
+      #chat-window { width: calc(100vw - 20px); right: 10px; }
+    }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -20,42 +270,38 @@
   </header>
 
   <main>
-    <!-- HERO / HOME -->
+    <!-- HERO -->
     <section id="home" class="section hero">
-  <div class="container hero-content">
-    <div>
-      <p class="hero-subtitle">Hello, I'm</p>
-      <h1 class="hero-title">Zheenbek Karaev</h1>
-      <!-- NEW BADGE -->
-
-      <p class="hero-text">
-        DevOps / SRE Engineer with 5+ years of experience
-        supporting cloud infrastructure, Kubernetes platforms, 
-        CI/CD pipelines, automation, and production systems across 
-        enterprise retail and financial environments.
-      </p>
-      <div class="ci-badge">
-        <span>TECHNICAL SKILLS:</span> </div>
-      <p class="section-text">
-          Cloud: AWS (EC2, VPC, IAM, RDS, S3, Route53, EKS, ECS, Lambda, CloudWatch)
-          Infrastructure as Code: Terraform, Ansible
-          Containers/Orchestration: Docker, Kubernetes, Helm, ArgoCD
-          CI/CD: Jenkins, GitHub Actions, GitLab CI
-          Monitoring & Logging: Prometheus, Grafana, ELK, CloudWatch
-          Programming: Python, Bash
-          Concepts: Microservices, High Availability, CI/CD, GitOps, HA/DR, RTO/RPO, DevSecOps
-          OS: Linux, Windows Server, 
-          Networking: TCP/IP, DNS, DHCP, NAT, HTTP/S, SSH, UDP, 
-          Infrastructure: Active Directory, NFS, Virtualization, 
-          Operations : Backup & Recovery, Incident Management, System Monitoring
-      </p>
-      
-      <div class="hero-buttons">
-        <a href="#projects" class="btn primary">View Projects</a>
-        <a href="#contact" class="btn secondary">Contact Me</a>
-      </div>
-    </div>
-   <div class="hero-card">
+      <div class="container hero-content">
+        <div>
+          <p class="hero-subtitle">Hello, I'm</p>
+          <h1 class="hero-title">Zheenbek Karaev</h1>
+          <p class="hero-text">
+            DevOps / SRE Engineer with 5+ years of experience
+            supporting cloud infrastructure, Kubernetes platforms,
+            CI/CD pipelines, automation, and production systems across
+            enterprise retail and financial environments.
+          </p>
+          <div class="ci-badge"><span>TECHNICAL SKILLS:</span></div>
+          <p class="section-text">
+            Cloud: AWS (EC2, VPC, IAM, RDS, S3, Route53, EKS, ECS, Lambda, CloudWatch)
+            Infrastructure as Code: Terraform, Ansible
+            Containers/Orchestration: Docker, Kubernetes, Helm, ArgoCD
+            CI/CD: Jenkins, GitHub Actions, GitLab CI
+            Monitoring &amp; Logging: Prometheus, Grafana, ELK, CloudWatch
+            Programming: Python, Bash
+            Concepts: Microservices, High Availability, CI/CD, GitOps, HA/DR, RTO/RPO, DevSecOps
+            OS: Linux, Windows Server
+            Networking: TCP/IP, DNS, DHCP, NAT, HTTP/S, SSH, UDP
+            Infrastructure: Active Directory, NFS, Virtualization
+            Operations: Backup &amp; Recovery, Incident Management, System Monitoring
+          </p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn primary">View Projects</a>
+            <a href="#contact" class="btn secondary">Contact Me</a>
+          </div>
+        </div>
+        <div class="hero-card">
           <p><strong>Location:</strong> Chicago, USA</p>
           <p><strong>Focus:</strong> AWS · Docker · Kubernetes · Terraform</p>
           <p><strong>Open to:</strong> DevOps / Cloud / SRE opportunities</p>
@@ -66,65 +312,40 @@
     <!-- PROJECTS -->
     <section id="projects" class="section">
       <div class="container">
-      <div class="ci-badge">
-        <span>PROJECTS:</span> </div>
+        <div class="ci-badge"><span>PROJECTS:</span></div>
         <div class="grid project-grid">
           <div class="card">
             <h3>Kafka Enterprise Orders</h3>
-            <p>
-              Microservices app with Kafka. Deployed using Docker and Kubernetes.
-              Infrastructure managed with Terraform. CI/CD with GitHub Actions.
-            </p>
+            <p>Microservices app with Kafka. Deployed using Docker and Kubernetes. Infrastructure managed with Terraform. CI/CD with GitHub Actions.</p>
             <p class="tag">Tech: Kafka, K8s, Docker, Terraform</p>
-            <!-- <a href="https://github.com/your-repo" target="_blank" class="link">View on GitHub</a> -->
           </div>
           <div class="card">
             <h3>Octopus AI — DevOps Engineer (Startup)</h3>
-            <p>
-              DevOps engineer in a startup developing a cloud-based TMS platform.
-              Built and maintained cloud infrastructure, CI/CD pipelines,
-              containerized services, and monitoring for production workloads.
-            </p>
-            <p>
-              Supported deployments, automation, system reliability,
-              and environment management for development and production.
-            </p>
+            <p>DevOps engineer in a startup developing a cloud-based TMS platform. Built and maintained cloud infrastructure, CI/CD pipelines, containerized services, and monitoring for production workloads.</p>
+            <p>Supported deployments, automation, system reliability, and environment management for development and production.</p>
             <p class="tag">TECH: AWS, Docker, Kubernetes, Jenkins, Linux, CI/CD, Cloud, Monitoring</p>
             <div class="project-links">
-
-            <a href="https://getoctopus.ai" target="_blank">
-              Live Website
-            </a>
+              <a href="https://getoctopus.ai" target="_blank">Live Website</a>
+            </div>
           </div>
-          </div>
-
           <div class="card">
             <h3>JumpToTech Microservices Platform</h3>
-            <p>
-              Full-stack microservices platform deployed on Kubernetes using GitOps
-              and CI/CD automation. Includes frontend, API gateway, backend services,
-              database, monitoring stack, and automated deployments.
-            </p>
+            <p>Full-stack microservices platform deployed on Kubernetes using GitOps and CI/CD automation. Includes frontend, API gateway, backend services, database, monitoring stack, and automated deployments.</p>
             <p class="tag">Tech: Kubernetes, Docker, Jenkins, ArgoCD, FastAPI, Next.js, PostgreSQL, Prometheus, Grafana</p>
-              <p>
-                <a href="https://github.com/Juzonb1r/jumptotech-frontend.git" target="_blank">
-                  GitHub Repo
-                </a>
-              </p>
+            <p><a href="https://github.com/Juzonb1r/jumptotech-frontend.git" target="_blank">GitHub Repo</a></p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- CERTIFICATIONS -->
     <section id="certifications" class="section">
       <div class="container">
-      <div class="ci-badge">
-        <span>CERTIFICATIONS:</span> </div>
+        <div class="ci-badge"><span>CERTIFICATIONS:</span></div>
         <div class="cert-grid">
           <div class="cert-card">
             <img src="images/aws.png" alt="AWS badge" />
           </div>
-
           <div class="cert-card">
             <img src="images/terraform.png" alt="Terraform badge" />
           </div>
@@ -135,15 +356,12 @@
     <!-- CONTACT -->
     <section id="contact" class="section section-alt">
       <div class="container">
-      <div class="ci-badge">
-        <span>CONTACT:</span> </div>
-        <p class="section-text">
-          Feel free to reach out if you want to talk about DevOps, cloud, or projects.
-        </p>
+        <div class="ci-badge"><span>CONTACT:</span></div>
+        <p class="section-text">Feel free to reach out if you want to talk about DevOps, cloud, or projects.</p>
         <div class="contact-grid">
           <div class="card">
             <h3>Email</h3>
-            <p><a href="mailto:jim@manasexpress.com">jimkaraev@gmail.com</a></p>
+            <p><a href="mailto:jimkaraev@gmail.com">jimkaraev@gmail.com</a></p>
           </div>
           <div class="card">
             <h3>LinkedIn</h3>
@@ -151,7 +369,7 @@
           </div>
           <div class="card">
             <h3>GitHub</h3>
-            <p><a href="https://github.com/juzonb1r” target="_blank">github.com/juzonb1r</a></p>
+            <p><a href="https://github.com/juzonb1r" target="_blank">github.com/juzonb1r</a></p>
           </div>
         </div>
       </div>
@@ -160,10 +378,164 @@
 
   <footer class="footer">
     <div class="container footer-content">
-      <p><span> Last updated: 23 March 2026</p></span>
+      <p>Last updated: 23 March 2026</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- ── AI CHAT WIDGET ── -->
+  <button id="chat-bubble" onclick="toggleChat()" aria-label="Open AI assistant">
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+  </button>
+
+  <div id="chat-window" role="dialog" aria-label="AI Assistant">
+    <div class="chat-header">
+      <div class="chat-avatar">ZK</div>
+      <div class="chat-header-info">
+        <div class="chat-header-name">Zheenbek Karaev</div>
+        <div class="chat-header-status">
+          <span class="chat-status-dot"></span>
+          AI Assistant · Ask me anything
+        </div>
+      </div>
+      <button class="chat-close-btn" onclick="toggleChat()" aria-label="Close chat">×</button>
+    </div>
+
+    <div id="chat-messages">
+      <div class="chat-msg bot">
+        <div class="chat-msg-avatar">ZK</div>
+        <div class="chat-bubble-msg">Hey! 👋 I'm Zheenbek's AI assistant. I can tell you about his DevOps experience, projects, tech stack, and availability. What would you like to know?</div>
+      </div>
+    </div>
+
+    <div class="chat-suggestions" id="chat-suggestions">
+      <button class="chat-chip" onclick="sendSuggestion(this)">Experience with K8s?</button>
+      <button class="chat-chip" onclick="sendSuggestion(this)">Current role?</button>
+      <button class="chat-chip" onclick="sendSuggestion(this)">Open to work?</button>
+      <button class="chat-chip" onclick="sendSuggestion(this)">AWS projects?</button>
+    </div>
+
+    <div class="chat-powered">Powered by Claude API</div>
+
+    <div class="chat-input-area">
+      <textarea
+        id="chat-input"
+        placeholder="Ask about experience, skills, projects..."
+        rows="1"
+        onkeydown="handleChatKey(event)"
+        oninput="autoChatResize(this)"
+      ></textarea>
+      <button id="chat-send-btn" onclick="sendChatMessage()" aria-label="Send">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ── MOBILE MENU ──────────────────────────────────────
+    const menuBtn = document.getElementById("menuBtn");
+    const nav = document.getElementById("nav");
+    if (menuBtn && nav) {
+      menuBtn.addEventListener("click", () => nav.classList.toggle("show"));
+    }
+
+    // ── SMOOTH SCROLL ────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const target = document.querySelector(link.getAttribute("href"));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          if (nav) nav.classList.remove("show");
+        }
+      });
+    });
+
+    // ── AI CHAT ──────────────────────────────────────────
+    const CHAT_API_URL = "https://do8kwd0hn9.execute-api.us-east-1.amazonaws.com/prod/chat";
+    let chatIsOpen = false;
+    let chatIsLoading = false;
+    const chatHistory = [];
+
+    function toggleChat() {
+      chatIsOpen = !chatIsOpen;
+      document.getElementById("chat-window").classList.toggle("open", chatIsOpen);
+      if (chatIsOpen) setTimeout(() => document.getElementById("chat-input").focus(), 300);
+    }
+
+    function autoChatResize(el) {
+      el.style.height = "auto";
+      el.style.height = Math.min(el.scrollHeight, 100) + "px";
+    }
+
+    function handleChatKey(e) {
+      if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendChatMessage(); }
+    }
+
+    function sendSuggestion(btn) {
+      document.getElementById("chat-input").value = btn.textContent;
+      document.getElementById("chat-suggestions").style.display = "none";
+      sendChatMessage();
+    }
+
+    function addChatMessage(text, role) {
+      const container = document.getElementById("chat-messages");
+      const div = document.createElement("div");
+      div.className = "chat-msg " + role;
+      div.innerHTML = '<div class="chat-msg-avatar">' + (role === "bot" ? "ZK" : "You") + "</div>" +
+                      '<div class="chat-bubble-msg">' + text + "</div>";
+      container.appendChild(div);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function showChatTyping() {
+      const container = document.getElementById("chat-messages");
+      const div = document.createElement("div");
+      div.className = "chat-msg bot";
+      div.id = "chat-typing";
+      div.innerHTML = '<div class="chat-msg-avatar">ZK</div>' +
+                      '<div class="chat-bubble-msg"><div class="chat-typing"><span></span><span></span><span></span></div></div>';
+      container.appendChild(div);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function hideChatTyping() {
+      const el = document.getElementById("chat-typing");
+      if (el) el.remove();
+    }
+
+    async function sendChatMessage() {
+      const input = document.getElementById("chat-input");
+      const text = input.value.trim();
+      if (!text || chatIsLoading) return;
+
+      chatIsLoading = true;
+      document.getElementById("chat-send-btn").disabled = true;
+      input.value = "";
+      input.style.height = "auto";
+
+      addChatMessage(text, "user");
+      chatHistory.push({ role: "user", content: text });
+      showChatTyping();
+
+      try {
+        const res = await fetch(CHAT_API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: chatHistory })
+        });
+        const data = await res.json();
+        hideChatTyping();
+        const reply = data.reply || "Sorry, I couldn't process that. Try again!";
+        addChatMessage(reply, "bot");
+        chatHistory.push({ role: "assistant", content: reply });
+      } catch (err) {
+        hideChatTyping();
+        addChatMessage("Sorry, something went wrong. Please try again!", "bot");
+      }
+
+      chatIsLoading = false;
+      document.getElementById("chat-send-btn").disabled = false;
+    }
+  </script>
 </body>
 </html>
